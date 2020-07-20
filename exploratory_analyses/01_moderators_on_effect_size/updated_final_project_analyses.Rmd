@@ -1,0 +1,363 @@
+---
+title: "MA for Linda Problem Paradigm - basic moderators"
+subtitle: "Modern Research Methods"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: 
+  html_document: 
+    highlight: kate
+    theme: cosmo
+---
+
+```{r global_options, include=FALSE}
+# DO NOT EDIT THIS
+knitr::opts_chunk$set(eval = TRUE, message = FALSE)
+library(tidyverse)
+library(knitr)
+library(metafor) # this is a package for analyzing meta-analytic data
+# source("helpers/prisma_diagram.R") # this loads some code I wrote to make the PRISMA diagram
+
+```
+
+* * *
+
+Before you are ready to analyze your data, you'll need to use the convert the data that you've coded into effect sizes. This will be done in a separate script. This markdown assumes that you already have your effect sizes calculated.
+
+## PRISMA diagram
+```{r}
+# my_prisma_plot <- prisma2(found = 432, # how many unique papers did you find through database searches (google scholar/jstor)?
+#         found_other = 0,  # how many papers did you find through other sources?
+#         screened = 432, # how many of those papers did you screen by looking at the title/abstract?
+#         screen_exclusions = 295, # how many of those papers that you screened did you exclude?
+#         full_text = 127, # how many papers did you look at the full text for?
+#         full_text_exclusions = 75, # how many papers did you exclude after looking at the ful text?
+#         quantitative = 52, # how many papers went in your final meta-analysis
+#         width = 800, height = 800)
+# 
+# my_prisma_plot
+```
+
+Uncommenting the following two lines will save the above plot to a pdf in the "plots" subdirectory with the filename "prisma_plot.pdf".
+```{r}
+# prisma_pdf(my_prisma_plot, "plots/updated_prisma_plot.pdf")
+# knitr::include_graphics(path =  "plots/updated_prisma_plot.pdf")
+```
+
+
+## Forest Plot
+
+```{r}
+MA_DATA_PATH <- "Updated MA data tidy with ES.csv" # you should replace this filename with your own MA data (from the "MA data tidy with ES" tab)
+```
+
+Read in data
+```{r}
+ma_data <- read_csv(MA_DATA_PATH) 
+# kable(ma_data)
+```
+
+Fit meta-analytic model
+```{r}
+ma_model <- rma(data = ma_data, measure="PLO", xi=n_at_least_one_error, ni=n_1)
+
+# ma_model
+```
+
+Make forest plot
+```{r, fig.height = 30}
+forest(ma_model)
+```
+
+There are lots of modifications you can make to this plot to make it more informative. You can see all the options here: https://www.rdocumentation.org/packages/metafor/versions/2.4-0/topics/forest.rma.
+
+```{r, fig.height = 35, fig.width = 15}
+# pdf("plots/forest_plot.pdf", height = 35, width = 13.5)
+forest(ma_model,
+       header = T,
+       slab = ma_data$short_cite,
+       col = "red",
+       cex = .6,
+       xlab = "Effect Size",
+       top = 0)
+# dev.off()
+```
+## Text Format
+```{r}
+cis_by_text <- ma_data %>%
+    group_by(text_format) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/text_format.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = text_format, 
+                    y = d_calc, 
+                    color = text_format)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Text Format") +
+  ggtitle("Effect Size by Text Format") +
+  geom_pointrange(data = cis_by_text, 
+                  aes(x = text_format, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+# dev.off()
+```
+## Computer Medium
+```{r}
+cis_by_computer <- ma_data %>%
+    group_by(computer_medium) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/computer_online_vs_in-lab.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = computer_medium, 
+                    y = d_calc, 
+                    color = computer_medium)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Computer Medium") +
+  ggtitle("Effect Size by Computer Medium") +
+  geom_pointrange(data = cis_by_computer, 
+                  aes(x = computer_medium, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+# dev.off()
+```
+
+
+## Naive or Informed
+```{r}
+cis_by_participant_status <- ma_data %>%
+    group_by(naive_or_informed) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/naive_or_informed.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = naive_or_informed, 
+                    y = d_calc, 
+                    color = naive_or_informed)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Participant Status") +
+  ggtitle("Effect Size by Level of Participant Knowledge") +
+  geom_pointrange(data = cis_by_participant_status, 
+                  aes(x = naive_or_informed, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 15) +
+  theme(legend.position = "none")
+# dev.off()
+
+```
+
+## Context Specific?
+```{r}
+cis_by_stimuli_relevance <- ma_data %>%
+    group_by(stimuli_context_specific) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/stimuli_context_specific.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = stimuli_context_specific, 
+                    y = d_calc, 
+                    color = stimuli_context_specific)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Stimuli Context Specific") +
+  ggtitle("Effect Size by Stimuli Relevance") +
+  geom_pointrange(data = cis_by_stimuli_relevance, 
+                  aes(x = stimuli_context_specific, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+# dev.off()
+```
+
+## Group vs Individial
+```{r}
+cis_by_testing_type <- ma_data %>%
+    group_by(group_or_individual_testing) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/group_or_individual.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = group_or_individual_testing, 
+                    y = d_calc, 
+                    color = group_or_individual_testing)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Group or Individual") +
+  ggtitle("Effect Size by Testing Type") +
+  geom_pointrange(data = cis_by_testing_type, 
+                  aes(x = group_or_individual_testing, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+# dev.off()
+```
+## Group Size
+```{r}
+cis_by_group_size <- ma_data %>%
+    group_by(group_size) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/group_size.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = group_size, 
+                    y = d_calc, 
+                    color = group_size)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Group Size") +
+  ggtitle("Effect Size by Group Size") +
+  geom_pointrange(data = cis_by_group_size, 
+                  aes(x = group_size, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+# dev.off()
+```
+
+## Language
+```{r}
+cis_by_language <- ma_data %>%
+    group_by(language) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/language.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = language, 
+                    y = d_calc, 
+                    color = language)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Group or Individual") +
+  ggtitle("Effect Size by Testing Type") +
+  geom_pointrange(data = cis_by_language, 
+                  aes(x = language, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+#dev.off()
+```
+
+## Linda Problem
+```{r}
+cis_by_linda <- ma_data %>%
+    group_by(linda_problem) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/linda_problem_yes_no.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = linda_problem, 
+                    y = d_calc, 
+                    color = linda_problem)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Linda Problem") +
+  ggtitle("Effect Size by Linda Problem") +
+  geom_pointrange(data = cis_by_linda, 
+                  aes(x = linda_problem, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+# dev.off()
+```
+
+## Funnel Plot
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/funnel_plot.pdf", height = 6, width = 6)
+funnel(ma_model)
+# dev.off()
+```
+
+
+
