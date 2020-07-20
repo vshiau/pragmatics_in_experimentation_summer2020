@@ -1,7 +1,7 @@
-TITLE
+Pragmatics in Experimentation - Summer 2020
 ===
 
-Author. TITLE. <!-- [[preprint]](writeup/journal/iat_lang.pdf) [[source]](writeup/journal/iat_lang.Rmd) [[supplemental materials]](https://url/). -->
+Shiau, V. Pragmatics in Experimentation. <!-- [[preprint]](writeup/journal/iat_lang.pdf) [[source]](writeup/journal/iat_lang.Rmd) [[supplemental materials]](https://url/). -->
 
 <!-- 
 In this project,... 
