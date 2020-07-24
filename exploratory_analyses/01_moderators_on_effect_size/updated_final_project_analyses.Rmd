@@ -1,6 +1,6 @@
 ---
-title: "MA for Linda Problem Paradigm - basic moderators"
-subtitle: "Modern Research Methods"
+title: "Meta-Analysis for Linda Problem Paradigm"
+subtitle: "SURA 2020 - Victoria Shiau"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output: 
   html_document: 
@@ -20,23 +20,26 @@ library(metafor) # this is a package for analyzing meta-analytic data
 
 * * *
 
-Before you are ready to analyze your data, you'll need to use the convert the data that you've coded into effect sizes. This will be done in a separate script. This markdown assumes that you already have your effect sizes calculated.
+We aim to analyze the effect size of experiments done with the Linda Problem Paradigm,
+coined by Tversky in the 1983 seminal paper.
+<!-- Before you are ready to analyze your data, you'll need to use the convert the data that you've coded into effect sizes. This will be done in a separate script. This markdown assumes that you already have your effect sizes calculated. -->
 
 ## PRISMA diagram
+The following PRISMA diagram summarizes the papers 
 ```{r}
-# my_prisma_plot <- prisma2(found = 432, # how many unique papers did you find through database searches (google scholar/jstor)?
-#         found_other = 0,  # how many papers did you find through other sources?
-#         screened = 432, # how many of those papers did you screen by looking at the title/abstract?
-#         screen_exclusions = 295, # how many of those papers that you screened did you exclude?
-#         full_text = 127, # how many papers did you look at the full text for?
-#         full_text_exclusions = 75, # how many papers did you exclude after looking at the ful text?
-#         quantitative = 52, # how many papers went in your final meta-analysis
+# my_prisma_plot <- prisma2(found = 432, # Count of unique papers found through database searches, namely Google Scholar and JSTOR
+#         found_other = 0,  # Papers found through other sources
+#         screened = 432, # Papers screened by scanning the title and abstract
+#         screen_exclusions = 295, # Of those screened, number of papers excluded
+#         full_text = 127, # Of those not previously excluded, papers screened by reading full text
+#         full_text_exclusions = 75, # Of those screened by full text, number of papers excluded
+#         quantitative = 52, # Final Count of unique papers in this meta-analysis
 #         width = 800, height = 800)
 # 
 # my_prisma_plot
 ```
 
-Uncommenting the following two lines will save the above plot to a pdf in the "plots" subdirectory with the filename "prisma_plot.pdf".
+<!-- Uncommenting the following two lines will save the above plot to a pdf in the "plots" subdirectory with the filename "prisma_plot.pdf". -->
 ```{r}
 # prisma_pdf(my_prisma_plot, "plots/updated_prisma_plot.pdf")
 # knitr::include_graphics(path =  "plots/updated_prisma_plot.pdf")
@@ -44,32 +47,25 @@ Uncommenting the following two lines will save the above plot to a pdf in the "p
 
 
 ## Forest Plot
+This plot displays the effect size of each experiment from the 52 unique papers we included. 
 
 ```{r}
-MA_DATA_PATH <- "Updated MA data tidy with ES.csv" # you should replace this filename with your own MA data (from the "MA data tidy with ES" tab)
+# Accessing spreadsheet with effect sizes and moderators
+MA_DATA_PATH <- "Updated MA data tidy with ES.csv"
+
+# Read in data
+ma_data <- read_csv(MA_DATA_PATH)
 ```
 
-Read in data
+<!-- Fit meta-analytic model -->
 ```{r}
-ma_data <- read_csv(MA_DATA_PATH) 
-# kable(ma_data)
-```
-
-Fit meta-analytic model
-```{r}
+# measure = "PLO" transforms the proportional effect sizes into Log Odds, a scale ranging from negative infinity to infinity
 ma_model <- rma(data = ma_data, measure="PLO", xi=n_at_least_one_error, ni=n_1)
-
-# ma_model
 ```
 
-Make forest plot
-```{r, fig.height = 30}
-forest(ma_model)
-```
-
-There are lots of modifications you can make to this plot to make it more informative. You can see all the options here: https://www.rdocumentation.org/packages/metafor/versions/2.4-0/topics/forest.rma.
-
-```{r, fig.height = 35, fig.width = 15}
+<!-- Make forest plot -->
+In any plot below, uncommenting the below two lines beginning with '# pdf' and '# dev.off' will download a pdf of the corresponding plot to a folder called "plots".
+```{r, fig.height = 30, fig.width = 10}
 # pdf("plots/forest_plot.pdf", height = 35, width = 13.5)
 forest(ma_model,
        header = T,
@@ -80,6 +76,70 @@ forest(ma_model,
        top = 0)
 # dev.off()
 ```
+First, the proportion of participants that committed at least one conjunction fallacy were converted to an effect size. These effect sizes were scaled using logit transformed proportion method, then plotted. 
+
+Each row represents one effect size and corresponding 95% confidence intervals. The size of each plotted effect size (each square) corresponds directly with the sample size - a larger sample size results in a larger effect size square plotted. 
+
+We see that there is a small, positive meta-analytic effect size of 0.43. There are no obvious outliers in this dataset, with the smallest plotted effect size of  -2.44 and the largest plotted effect size of 4.80. There is a curious alignment of three effect sizes of -2.40 from Wells (1985). Through revisiting the papers, it was confirmed that these effect sizes are indeed calculated correctly and the homogeneity is likely due to a small sample size.
+
+This positive meta-analytic effect size suggests that the conjunction fallacy does indeed occur. Below, possible moderators of this effect are included and analyzed.
+
+<!-- There are lots of modifications you can make to this plot to make it more informative. You can see all the options here: https://www.rdocumentation.org/packages/metafor/versions/2.4-0/topics/forest.rma. -->
+## Funnel Plot
+This plot displays the relationship between the effect size and standard error. The white triangle region corresponds to a 95% confidence interval around the meta-analytic effect size (0.43), which is shown with a vertical line.
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/funnel_plot.pdf", height = 6, width = 6)
+funnel(ma_model)
+# dev.off()
+```
+
+Overall, we observe that there is an asymmetrical distribution around the meta-analytic effect size. Below a standard error of 0.721, we see that the distribution appears symmetrical and seems to be evenly within and without the 95% confidence interval. 
+
+Above a standard error of 0.721, we see that there are only positive effect sizes reported, and they tend to lie outside the 95% confidence interval of the meta-analytic effect size.
+
+Because a smaller standard error signals a larger sample size, it appears that experiments with small sample sizes and positive effect sizes tend to publish their results while those with small sample sizes and negative effect sizes tend to forgo publishing their findings. Experiments with large sample sizes tend to publish their findings without regard to the sign of the effect size.
+
+# Moderator Plots
+
+## Linda Problem
+```{r}
+cis_by_linda <- ma_data %>%
+    group_by(linda_problem) %>%
+    summarize(mean = mean(d_calc),
+            sd = sd(d_calc),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+```
+
+```{r, fig.height = 6, fig.width = 6}
+# pdf("plots/linda_problem_yes_no.pdf", height = 6, width = 6)
+
+ggplot(ma_data, aes(x = linda_problem, 
+                    y = d_calc, 
+                    color = linda_problem)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Linda Problem") +
+  ggtitle("Effect Size by Linda Problem") +
+  geom_pointrange(data = cis_by_linda, 
+                  aes(x = linda_problem, 
+                      y = mean, ymin = ci_lower, 
+                      ymax = ci_upper), 
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
+# dev.off()
+```
+When plotting the effect sizes of experiments that use the exact wording of the original Linda Problem next to the effect sizes of those that used other conjunction fallacy problems, we see that there is significant overlap in the effect size and confidence intervals.
+
+This suggests that the original effect found by Tversky and Kaneman in the 1983 seminal paper was not solely due the wording of the original Linda Problem, but rather stemming from an underlying suspectibility to the much broader conjunction fallacy.
+
+
 ## Text Format
 ```{r}
 cis_by_text <- ma_data %>%
@@ -113,6 +173,10 @@ ggplot(ma_data, aes(x = text_format,
   theme(legend.position = "none")
 # dev.off()
 ```
+Text format corresponds to the means through which participants accessed the material of the experiment. There were three possibilities: booklet, computer, and missing. Booklet was recorded if the experiment material was presented through physical paper, computer if accessed digitally, and missing if the text format was not mentioned.
+
+We observe that the mean effect sizes and confidence intervals for each text format largely overlap, suggesting that the text format has a limited effect on the committing of a conjunction fallacy by the participant.
+
 ## Computer Medium
 ```{r}
 cis_by_computer <- ma_data %>%
@@ -146,7 +210,13 @@ ggplot(ma_data, aes(x = computer_medium,
   theme(legend.position = "none")
 # dev.off()
 ```
+Computer medium is a moderator coded only for experiments that presented materials to participants through a digital format. In-lab corresponds to experiments conducted on a lab device, and online corresponds to experiments conducted on a personal electronic device.
 
+As in-lab experiments typically involve more interaction with a human experimenter, we were curious as to whether interaction may influence the effect size.
+
+We see that there is a larger mean effect size for experiments performed in the lab when compared to the effect size for experiments performed on an individual electronic device with no direct human interaction.
+
+When interacting with an experimenter, it is likely that some verbal exchange has occurred between the experimenter and participant as necessitated by social cues. This verbal exchange may contain instructions pertaining to the task, which may have influenced the participant's results.
 
 ## Naive or Informed
 ```{r}
@@ -182,6 +252,9 @@ ggplot(ma_data, aes(x = naive_or_informed,
 # dev.off()
 
 ```
+This moderator corresponds to the amount of previous statistical knowledge of the participants. The key to avoiding a conjunction fallacy is knowledge of probability. Having two conditions apply to a situation at the same time is less likely than having one condition apply to a situation. Thus, we reasoned that prior statistical knowledge might prevent a participant from committing a conjunction fallacy. 
+
+We observe that the mean effect sizes and confidence intervals for both naive and informed participants largely overlap, suggesting that previous statistical knowledge has a limited effect on the committing of a conjunction fallacy by the participant.
 
 ## Context Specific?
 ```{r}
@@ -231,7 +304,6 @@ cis_by_testing_type <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/group_or_individual.pdf", height = 6, width = 6)
-
 ggplot(ma_data, aes(x = group_or_individual_testing, 
                     y = d_calc, 
                     color = group_or_individual_testing)) +
@@ -250,39 +322,45 @@ ggplot(ma_data, aes(x = group_or_individual_testing,
   theme(legend.position = "none")
 # dev.off()
 ```
-## Group Size
-```{r}
-cis_by_group_size <- ma_data %>%
-    group_by(group_size) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
-            n = n()) %>%
-    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
-         ci_lower = mean - ci_range_95,
-         ci_upper = mean + ci_range_95)
-```
+In this moderator, 'individual' corresponds to a participant that was tested individually, and 'group' corresponds to participants that were given experimental material or instructions collectively. Experiments done with a group have either had participants individually fill out the final answers or collaboratively.
 
-```{r, fig.height = 6, fig.width = 6}
-# pdf("plots/group_size.pdf", height = 6, width = 6)
+It is possible that group testing involves more interaction between experimenters and participants in order to give instructions (and in certain experiments, collaborate for the answer).
 
-ggplot(ma_data, aes(x = group_size, 
-                    y = d_calc, 
-                    color = group_size)) +
-  geom_violin() +
-  geom_point(alpha = .4)  +
-  ylab("Effect Size") +
-  xlab("Group Size") +
-  ggtitle("Effect Size by Group Size") +
-  geom_pointrange(data = cis_by_group_size, 
-                  aes(x = group_size, 
-                      y = mean, ymin = ci_lower, 
-                      ymax = ci_upper), 
-                  color = "black") +
-  geom_hline(aes(yintercept = 0), linetype = 2) +
-  theme_classic(base_size = 16) +
-  theme(legend.position = "none")
-# dev.off()
-```
+We see that there is a larger mean effect size for experiments performed with individual testing when compared to the effect size for experiments with group testing. It is possible that experiments with collaboration or other participants physically present caused participants to consider the problem more closely.
+
+<!-- ## Group Size -->
+<!-- ```{r} -->
+<!-- cis_by_group_size <- ma_data %>% -->
+<!--     group_by(group_size) %>% -->
+<!--     summarize(mean = mean(d_calc), -->
+<!--             sd = sd(d_calc), -->
+<!--             n = n()) %>% -->
+<!--     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)), -->
+<!--          ci_lower = mean - ci_range_95, -->
+<!--          ci_upper = mean + ci_range_95) -->
+<!-- ``` -->
+
+<!-- ```{r, fig.height = 6, fig.width = 6} -->
+<!-- # pdf("plots/group_size.pdf", height = 6, width = 6) -->
+
+<!-- ggplot(ma_data, aes(x = group_size,  -->
+<!--                     y = d_calc,  -->
+<!--                     color = group_size)) + -->
+<!--   geom_violin() + -->
+<!--   geom_point(alpha = .4)  + -->
+<!--   ylab("Effect Size") + -->
+<!--   xlab("Group Size") + -->
+<!--   ggtitle("Effect Size by Group Size") + -->
+<!--   geom_pointrange(data = cis_by_group_size,  -->
+<!--                   aes(x = group_size,  -->
+<!--                       y = mean, ymin = ci_lower,  -->
+<!--                       ymax = ci_upper),  -->
+<!--                   color = "black") + -->
+<!--   geom_hline(aes(yintercept = 0), linetype = 2) + -->
+<!--   theme_classic(base_size = 16) + -->
+<!--   theme(legend.position = "none") -->
+<!-- # dev.off() -->
+<!-- ``` -->
 
 ## Language
 ```{r}
@@ -305,8 +383,8 @@ ggplot(ma_data, aes(x = language,
   geom_violin() +
   geom_point(alpha = .4)  +
   ylab("Effect Size") +
-  xlab("Group or Individual") +
-  ggtitle("Effect Size by Testing Type") +
+  xlab("Language") +
+  ggtitle("Effect Size by Language") +
   geom_pointrange(data = cis_by_language, 
                   aes(x = language, 
                       y = mean, ymin = ci_lower, 
@@ -317,46 +395,33 @@ ggplot(ma_data, aes(x = language,
   theme(legend.position = "none")
 #dev.off()
 ```
+With the exception of experiments conducted in French, we see that the effect sizes for the conjunction fallacy are all above 0.50. The largest effect sizes are present in experiments conducted in Italian, Swedish, and Dutch, followed by those in English, Greek, and German.
 
-## Linda Problem
 ```{r}
-cis_by_linda <- ma_data %>%
-    group_by(linda_problem) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
-            n = n()) %>%
-    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
-         ci_lower = mean - ci_range_95,
-         ci_upper = mean + ci_range_95)
+ma_data_with_eng <- ma_data %>%
+  mutate(english_or_non_english = case_when(language == "english" ~ "english", TRUE~ "not_english"))
 ```
 
 ```{r, fig.height = 6, fig.width = 6}
-# pdf("plots/linda_problem_yes_no.pdf", height = 6, width = 6)
+# pdf("plots/language.pdf", height = 6, width = 6)
 
-ggplot(ma_data, aes(x = linda_problem, 
-                    y = d_calc, 
-                    color = linda_problem)) +
-  geom_violin() +
-  geom_point(alpha = .4)  +
-  ylab("Effect Size") +
-  xlab("Linda Problem") +
-  ggtitle("Effect Size by Linda Problem") +
-  geom_pointrange(data = cis_by_linda, 
-                  aes(x = linda_problem, 
-                      y = mean, ymin = ci_lower, 
-                      ymax = ci_upper), 
-                  color = "black") +
-  geom_hline(aes(yintercept = 0), linetype = 2) +
-  theme_classic(base_size = 16) +
-  theme(legend.position = "none")
-# dev.off()
-```
-
-## Funnel Plot
-```{r, fig.height = 6, fig.width = 6}
-# pdf("plots/funnel_plot.pdf", height = 6, width = 6)
-funnel(ma_model)
-# dev.off()
+# ggplot(ma_data, aes(x = , 
+#                     y = d_calc, 
+#                     color = )) +
+#   geom_violin() +
+#   geom_point(alpha = .4)  +
+#   ylab("Effect Size") +
+#   xlab("Language") +
+#   ggtitle("Effect Size by English and not-English studies") +
+#   geom_pointrange(data = by_eng_and_not_eng, 
+#                   aes(x = language, 
+#                       y = mean, ymin = ci_lower, 
+#                       ymax = ci_upper), 
+#                   color = "black") +
+#   geom_hline(aes(yintercept = 0), linetype = 2) +
+#   theme_classic(base_size = 16) +
+#   theme(legend.position = "none")
+#dev.off()
 ```
 
 
