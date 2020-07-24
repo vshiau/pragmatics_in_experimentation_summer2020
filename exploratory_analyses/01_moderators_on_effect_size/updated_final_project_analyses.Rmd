@@ -14,6 +14,7 @@ knitr::opts_chunk$set(eval = TRUE, message = FALSE)
 library(tidyverse)
 library(knitr)
 library(metafor) # this is a package for analyzing meta-analytic data
+library(here)
 # source("helpers/prisma_diagram.R") # this loads some code I wrote to make the PRISMA diagram
 
 ```
@@ -51,7 +52,7 @@ This plot displays the effect size of each experiment from the 52 unique papers 
 
 ```{r}
 # Accessing spreadsheet with effect sizes and moderators
-MA_DATA_PATH <- "Updated MA data tidy with ES.csv"
+MA_DATA_PATH <- here("data/processed/Updated MA data tidy with ES.csv")
 
 # Read in data
 ma_data <- read_csv(MA_DATA_PATH)
@@ -61,6 +62,9 @@ ma_data <- read_csv(MA_DATA_PATH)
 ```{r}
 # measure = "PLO" transforms the proportional effect sizes into Log Odds, a scale ranging from negative infinity to infinity
 ma_model <- rma(data = ma_data, measure="PLO", xi=n_at_least_one_error, ni=n_1)
+
+ rma.mv(d_calc ~ mean_age * test_mass_or_distributed, V = d_var_calc,
+                            random = ~ 1 | short_cite, data = ma_data)
 ```
 
 <!-- Make forest plot -->
