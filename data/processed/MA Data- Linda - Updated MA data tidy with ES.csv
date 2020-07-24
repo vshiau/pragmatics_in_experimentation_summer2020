@@ -1,0 +1,201 @@
+coder,unique_id,short_cite,expt_num,expt_condition,proportion_errors,population_characteristics,text_format,computer_medium,group_or_individual_testing,group_size,language,stimuli_context_specific,linda_problem,naive_or_informed,n_1,n_at_least_one_error,d_calc,d_var_calc,es_method
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",1,no_training_direct,,random_people,booklet,does_not_apply,individual,1,english,no,yes,naive,20,15,0.75,0.009375,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",1,training_direct,,random_people,booklet,does_not_apply,individual,1,english,no,yes,informed,40,18,0.45,0.0061875,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",1,no_training_indirect,,random_people,booklet,does_not_apply,individual,1,english,no,no,naive,320,250,0.78125,0.0005340576172,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",1,training_indirect,,random_people,booklet,does_not_apply,individual,1,english,no,no,informed,640,260,0.40625,0.0003768920898,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",2,standard_no_training,,random_people,booklet,does_not_apply,individual,1,english,no,no,naive,120,92,0.7666666667,0.001490740741,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",2,standard_training,,random_people,booklet,does_not_apply,individual,1,english,no,no,informed,120,54,0.45,0.0020625,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",2,not_a_no_training,,random_people,booklet,does_not_apply,individual,1,english,no,no,naive,120,116,0.9666666667,0.0002685185185,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",2,not_a_training,,random_people,booklet,does_not_apply,individual,1,english,no,no,informed,120,113,0.9416666667,0.0004577546296,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",2,maybe_a_no_training,,random_people,booklet,does_not_apply,individual,1,english,no,no,naive,120,93,0.775,0.001453125,prop_es
+Zoe,agnoli1989,"Agnoli, Franca, and David H Krantz. (1989)",2,maybe_a_training,,random_people,booklet,does_not_apply,individual,1,english,no,no,informed,120,92,0.7666666667,0.001490740741,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",1,CRT_high,,college_students,booklet,does_not_apply,individual,1,spanish,no,yes,naive,154,73,0.474025974,0.001618995779,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",1,CRT_low,,college_students,booklet,does_not_apply,individual,1,spanish,no,yes,naive,261,184,0.7049808429,0.0007968691726,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",1,FI_high,,college_students,booklet,does_not_apply,individual,individual,spanish,no,yes,naive,207,128,0.6183574879,0.00114005558,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",1,FI_low,,college_students,booklet,does_not_apply,individual,individual,spanish,no,yes,naive,208,129,0.6201923077,0.001132470236,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",2,CRT_high,,college_students,booklet,does_not_apply,individual,individual,german,no,yes,naive,45,16,0.3555555556,0.005091906722,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",2,CRT_low,,college_students,booklet,does_not_apply,individual,individual,german,no,yes,naive,66,46,0.696969697,0.003200044522,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",2,FI_high,,college_students,booklet,does_not_apply,individual,individual,german,no,yes,naive,55,38,0.6909090909,0.003882794891,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",2,FI_low,,college_students,booklet,does_not_apply,individual,individual,german,no,yes,naive,56,24,0.4285714286,0.004373177843,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",3,CRT_high,,college_students,booklet,does_not_apply,individual,individual,english,no,yes,informed,249,104,0.4176706827,0.0009767947129,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",3,CRT_low,,college_students,booklet,does_not_apply,individual,individual,english,no,yes,informed,112,69,0.6160714286,0.002111851995,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",3,FI_high,,college_students,booklet,does_not_apply,individual,individual,english,no,yes,informed,182,85,0.467032967,0.001367654806,prop_es
+Zoe,alos-ferrer2016,"Alós-Ferrer, C., & Hügelschäfer, S. (2016).",3,FI_low,,college_students,booklet,does_not_apply,individual,individual,english,no,yes,informed,179,88,0.4916201117,0.00139625574,prop_es
+Zoe,alósferrer2016,"Alós-Ferrer, C., Garagnani, M., & Hügelschäfer, S. (2016).",5,"CFC, conjunction_fallacy",,college_students,booklet,does_not_apply,individual,individual,german,no,no,naive,158,66,0.417721519,0.001539431972,prop_es
+Zoe,andersson2020,"Andersson, L., Eriksson, J., et al. (2020).",1,similarity_group,,university_students,computer,in_lab,individual,individual,swedish,no,yes,naive,20,19,0.95,0.002375,prop_es
+Zoe,andersson2020,"Andersson, L., Eriksson, J., et al. (2020).",1,incorrect_prob_group,,university_students,computer,in_lab,individual,individual,swedish,no,yes,naive,17,14,0.8235294118,0.008548748219,prop_es
+Zoe,bonini2004,"Bonini, N., Tentori, K. and Osherson, D. (2004),",1,averaged_and,,college_students,booklet,does_not_apply,group,small,italian,no,no,naive,60,51,0.85,0.002125,prop_es
+Zoe,bonini2004,"Bonini, N., Tentori, K. and Osherson, D. (2004),",2,avaraged_and,,college_students,booklet,does_not_apply,group,individual,italian,no,no,naive,60,47,0.7833333333,0.002828703704,prop_es
+V,braga2015,"Braga, J. N., Ferreira, M. B., & Sherman, S. J. (2015).",1,high_psychological_distance,0.83,college_students,missing,does_not_apply,individual,individual,english,yes,yes,naive,48,40,0.8333333333,0.002893518519,prop_es
+V,braga2015,"Braga, J. N., Ferreira, M. B., & Sherman, S. J. (2015).",1,low_psychological_distance,0.56,college_students,missing,does_not_apply,individual,individual,english,yes,yes,naive,48,27,0.5625,0.005126953125,prop_es
+V,carlberg2017,"Carlberg, J. (2017).",1,probability,0.737,random_people,computer,in_lab,individual,individual,swedish,no,no,naive,24,18,0.75,0.0078125,prop_es
+V,carlberg2017,"Carlberg, J. (2017).",1,informed_probability,0.23,random_people,computer,in_lab,individual,individual,swedish,no,no,informed,24,6,0.25,0.0078125,prop_es
+V,carlberg2017,"Carlberg, J. (2017).",1,similarity,0.904,random_people,computer,in_lab,individual,individual,swedish,no,yes,naive,24,22,0.9166666667,0.00318287037,prop_es
+V,charness2010,"Charness, G., Karni, E., & Levin, D. (2010).",1,individuals_no_incentive,0.581,college_students,booklet,does_not_apply,group,individual,english,no,yes,naive,86,50,0.5813953488,0.002829939502,prop_es
+V,charness2010,"Charness, G., Karni, E., & Levin, D. (2010).",1,individuals_with_incentive,0.33,college_students,booklet,does_not_apply,group,individual,english,no,yes,naive,94,31,0.329787234,0.002351357599,prop_es
+V,charness2010,"Charness, G., Karni, E., & Levin, D. (2010).",1,pairs_no_incentive,0.482,college_students,booklet,does_not_apply,group,small,english,no,yes,naive,56,27,0.4821428571,0.004458591472,prop_es
+V,charness2010,"Charness, G., Karni, E., & Levin, D. (2010).",1,pairs_with_incentive,0.132,college_students,booklet,does_not_apply,group,small,english,no,yes,naive,38,5,0.1315789474,0.003006998105,prop_es
+V,charness2010,"Charness, G., Karni, E., & Levin, D. (2010).",1,trios_no_incentive,0.256,college_students,booklet,does_not_apply,group,small,english,no,yes,naive,39,10,0.2564102564,0.004888821457,prop_es
+V,charness2010,"Charness, G., Karni, E., & Levin, D. (2010).",1,trios_with_incentive,0.104,college_students,booklet,does_not_apply,group,small,english,no,yes,naive,48,5,0.1041666667,0.001944082755,prop_es
+V,crisp2009,"Crisp, A. K., & Feeney, A. (2009).",1,strong,0.51,college_students,booklet,does_not_apply,individual,individual,english,no,no,naive,51,26,0.5098039216,0.00490007614,prop_es
+V,crisp2009,"Crisp, A. K., & Feeney, A. (2009).",1,weak,0.35,college_students,booklet,does_not_apply,individual,individual,english,no,no,naive,51,18,0.3529411765,0.004477915734,prop_es
+V,crisp2009,"Crisp, A. K., & Feeney, A. (2009).",1,unrelated,0.24,college_students,booklet,does_not_apply,individual,individual,english,no,no,naive,51,12,0.2352941176,0.003528054821,prop_es
+V,dagnall2016,"Dagnall, N., Drinkwater, K., Denovan, A., Parker, A., & Rowley, K. (2016).",1,,0.37,college_students,booklet,does_not_apply,individual,individual,english,no,no,naive,223,83,0.3721973094,0.001047831714,prop_es
+V,deneys2011,"De Neys, W., Cromheeke, S., & Osman, M. (2011).",2,conflict,0.76,undergraduates,missing,does_not_apply,group,individual,english,no,yes,naive,147,112,0.7619047619,0.001234053712,prop_es
+V,devetag2013,"Devetag, G., Ceccacci, F., & De Salvo, P. (2013).",1,private,,random_people,computer,online,individual,individual,english,no,yes,naive,74,24,0.3243243243,0.002961325094,prop_es
+V,devetag2013,"Devetag, G., Ceccacci, F., & De Salvo, P. (2013).",1,public,,random_people,computer,online,individual,individual,english,no,yes,naive,207,69,0.3333333333,0.001073537305,prop_es
+V,devetag2013,"Devetag, G., Ceccacci, F., & De Salvo, P. (2013).",2,private_flat_fee,,random_people,computer,online,individual,individual,english,no,yes,naive,136,95,0.6985294118,0.001548427005,prop_es
+V,devetag2013,"Devetag, G., Ceccacci, F., & De Salvo, P. (2013).",2,public_flat_fee,,random_people,computer,online,individual,individual,english,no,yes,naive,123,87,0.7073170732,0.001683086432,prop_es
+V,devetag2013,"Devetag, G., Ceccacci, F., & De Salvo, P. (2013).",3,private_with_bonus,,random_people,computer,online,individual,individual,english,no,yes,naive,103,54,0.5242718447,0.002421464831,prop_es
+V,devetag2013,"Devetag, G., Ceccacci, F., & De Salvo, P. (2013).",3,public_with_bonus,,random_people,computer,online,individual,individual,english,no,yes,naive,99,63,0.6363636364,0.002337423825,prop_es
+V,donati2019,"Donati, C., Guazzini, A., Gronchi, G., & Smorti, A. (2019).",1,individual,0.879,random_people,missing,does_not_apply,group,individual,italian,no,yes,naive,60,53,0.8833333333,0.001717592593,prop_es
+V,donati2019,"Donati, C., Guazzini, A., Gronchi, G., & Smorti, A. (2019).",1,group,0.533,random_people,missing,does_not_apply,group,3,italian,no,yes,naive,60,32,0.5333333333,0.004148148148,prop_es
+V,donati2019,"Donati, C., Guazzini, A., Gronchi, G., & Smorti, A. (2019).",1,narrative,0.25,random_people,missing,does_not_apply,group,1,italian,no,yes,naive,60,15,0.25,0.003125,prop_es
+V,donati2019,"Donati, C., Guazzini, A., Gronchi, G., & Smorti, A. (2019).",1,paradigmatic,0.872,random_people,missing,does_not_apply,group,1,italian,no,yes,naive,60,52,0.8666666667,0.001925925926,prop_es
+Themi,donovan1997,"Donovan, S., & Epstein, S. (1997)",1,Reasons,,undergraduates,booklet,does_not_apply,group,1,english,yes,yes,informed,48,39,0.8125,0.003173828125,prop_es
+Themi,donovan1997,"Donovan, S., & Epstein, S. (1997)",2,Principles,,undergraduates,booklet,does_not_apply,group,1,english,yes,yes,informed,48,23,0.4791666667,0.005199291088,prop_es
+Themi,donovan1997,"Donovan, S., & Epstein, S. (1997)",3,Control,,undergraduates,booklet,does_not_apply,group,1,english,yes,yes,informed,48,43,0.8958333333,0.001944082755,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),1,Linda_no_model,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,54,49,0.9074074074,0.001555911192,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),1,Bill_model,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,54,32,0.5925925926,0.004470863181,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),1,Bill_no_model,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,54,41,0.7592592593,0.003384900676,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),1,Linda_model,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,61,40,0.6557377049,0.003700750283,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),2,Linda,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,98,70,0.7142857143,0.002082465639,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),2,Bill,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,98,65,0.6632653061,0.002279024896,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),2,Mr.F,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,98,34,0.3469387755,0.002311961853,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),2,John P,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,informed,98,56,0.5714285714,0.002498958767,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),3,Linda,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,naive,64,24,0.375,0.003662109375,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),3,Bill,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,naive,64,18,0.28125,0.003158569336,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),3,Mr.F,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,naive,64,7,0.109375,0.001522064209,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),3,John P,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,naive,64,14,0.21875,0.002670288086,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),4,Linda,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,naive,36,29,0.8055555556,0.004350994513,prop_es
+Themi,dulany1991,Don E. Dulany and Denis J. Hilton (1991),4,Bill,,undergraduates,missing,does_not_apply,individual,1,english,yes,yes,naive,22,14,0.6363636364,0.01051840721,prop_es
+Themi,erceg2014,"Erceg, N., & Galić, Z. (2014)",1,Frequent bettors,,random_people,computer,online,individual,1,english,yes,no,naive,67,33,0.4925373134,0.003730512064,prop_es
+Themi,erceg2014,"Erceg, N., & Galić, Z. (2014)",1,Sporatic bettors,,random_people,computer,online,individual,1,english,yes,no,naive,63,27,0.4285714286,0.003887269193,prop_es
+Themi,faurebloom2015,"Faure-Bloom, J., Vallée-Tourangeau, G., & Mannan, S. K. (2015)",1,conflict,,random_people,missing,does_not_apply,individual,1,english,yes,yes,naive,41,34,0.8292682927,0.003453229059,prop_es
+Themi,faurebloom2015,"Faure-Bloom, J., Vallée-Tourangeau, G., & Mannan, S. K. (2015)",1,no conflict,,random_people,missing,does_not_apply,individual,1,english,yes,yes,naive,41,35,0.8536585366,0.003046966817,prop_es
+Themi,garb2006,"Garb, H. N. (2006)",1,,,college_students,missing,does_not_apply,individual,1,english,yes,yes,informed,40,23,0.575,0.006109375,prop_es
+V,giddings2016,"Giddings, L., & Dunn, T. J. (2016).",1,stimuli_religious,,college_students,missing,does_not_apply,missing,1,english,yes,yes,naive,100,52,0.52,0.002496,prop_es
+V,giddings2016,"Giddings, L., & Dunn, T. J. (2016).",1,stimuli_nonreligious,,college_students,missing,does_not_apply,missing,1,english,yes,yes,naive,100,36,0.36,0.002304,prop_es
+Nicole,handley2006,"Handley, Evans, Thompson 2006",1,past,,college_students,booklet,does_not_apply,group,1,english,no,no,naive,54,39,0.7222222222,0.003715134888,prop_es
+Nicole,handley2006,"Handley, Evans, Thompson 2006",1,future,,college_students,booklet,does_not_apply,group,1,english,no,no,naive,54,15,0.2777777778,0.003715134888,prop_es
+Nicole,handley2006,"Handley, Evans, Thompson 2006",2,past,,college_students,booklet,does_not_apply,group,1,english,no,no,naive,24,21,0.875,0.004557291667,prop_es
+Nicole,handley2006,"Handley, Evans, Thompson 2006",2,future,,college_students,booklet,does_not_apply,group,1,english,no,no,naive,24,13,0.5416666667,0.0103443287,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",1,paraphrase,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,18,15,0.8333333333,0.007716049383,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",2,TP+,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,22,6,0.2727272727,0.009015777611,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",2,P+,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,22,18,0.8181818182,0.006761833208,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",2,TP,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,22,13,0.5909090909,0.01098797896,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",2,P,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,24,21,0.875,0.004557291667,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",4,original,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,23,3,0.1304347826,0.004931371743,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",4,variant 2,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,25,5,0.2,0.0064,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",4,variant 3,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,25,4,0.16,0.005376,prop_es
+Nicole,hertwig1999,"Hertwig, R. and Gigerenzer, G. (1999)",4,variant 4,,college_students,booklet,does_not_apply,individual,1,german,no,yes,naive,24,16,0.6666666667,0.009259259259,prop_es
+Nicole,hertwig2008,"Hertwig, R., Benz, B., & Krauss, S. (2008)",2,Scandinavia task,,college_students,booklet,does_not_apply,individual,1,german,no,no,informed,76,13,0.1710526316,0.001865705642,prop_es
+Nicole,hertwig2008,"Hertwig, R., Benz, B., & Krauss, S. (2008)",3,cigarette-tax task,,college_students,booklet,does_not_apply,individual,1,german,no,no,naive,80,64,0.8,0.002,prop_es
+V,hilton1991,"Hilton, D. J. (1991).",1,model,,undergraduates,missing,does_not_apply,group,1,english,no,yes,naive,115,60,0.5217391304,0.002169803567,prop_es
+V,hilton1991,"Hilton, D. J. (1991).",1,novel_model_detailed_wording,,undergraduates,missing,does_not_apply,group,1,english,no,yes,naive,115,14,0.1217391304,0.0009297279527,prop_es
+V,howe2016,"Howe, R., & Costello, F. (2016).",1,time_period_1,0.45,college_students,missing,does_not_apply,group,1,english,no,yes,naive,40,39,0.975,0.000609375,prop_es
+V,howe2016,"Howe, R., & Costello, F. (2016).",1,time_period_2,0.44,college_students,missing,does_not_apply,group,1,english,no,yes,naive,40,37,0.925,0.001734375,prop_es
+V,howe2016,"Howe, R., & Costello, F. (2016).",1,short,0.41,college_students,missing,does_not_apply,group,1,english,no,yes,naive,40,16,0.4,0.006,prop_es
+V,howe2016,"Howe, R., & Costello, F. (2016).",1,long,0.47,college_students,missing,does_not_apply,group,1,english,no,yes,naive,40,19,0.475,0.006234375,prop_es
+V,jarvstad2011,"Jarvstad, A., & Hahn, U. (2011).",1,likely_unlikely,,undergraduates,booklet,does_not_apply,group,1,english,no,no,naive,22,15,0.6818181818,0.009861006762,prop_es
+V,jarvstad2011,"Jarvstad, A., & Hahn, U. (2011).",1,likely_likely_unlikely,,undergraduates,booklet,does_not_apply,group,1,english,no,no,naive,28,20,0.7142857143,0.007288629738,prop_es
+V,jarvstad2011,"Jarvstad, A., & Hahn, U. (2011).",1,likely_unlikely_unlikely,,undergraduates,booklet,does_not_apply,group,1,english,no,no,naive,25,19,0.76,0.007296,prop_es
+V,klacynski2001,"Klaczynski, P. A. (2001).",5,early_adolescent,,adolescents,missing,does_not_apply,group,1,english,no,yes,naive,66,38,0.5757575758,0.003700921056,prop_es
+V,klacynski2001,"Klaczynski, P. A. (2001).",5,middle_adolescent,,adolescents,missing,does_not_apply,group,1,english,no,yes,naive,76,31,0.4078947368,0.00317785027,prop_es
+V,knoth2009,"Knoth, R. L., Benassi, V. A., & Geher, G. (2009).",1,incompatible_conjunctions,,undergraduates,missing,does_not_apply,group,1,english,no,no,naive,57,35,0.6140350877,0.00415782454,prop_es
+V,knoth2009,"Knoth, R. L., Benassi, V. A., & Geher, G. (2009).",1,standard_conjunctions,,undergraduates,missing,does_not_apply,group,1,english,no,no,naive,57,46,0.8070175439,0.002732284698,prop_es
+V,knoth2009,"Knoth, R. L., Benassi, V. A., & Geher, G. (2009).",2,unrepresentative_unrepresentative,,undergraduates,missing,does_not_apply,group,1,english,no,no,naive,25,20,0.8,0.0064,prop_es
+V,knoth2009,"Knoth, R. L., Benassi, V. A., & Geher, G. (2009).",2,unrepresentative_representative,,undergraduates,missing,does_not_apply,group,1,english,no,no,naive,25,9,0.36,0.009216,prop_es
+V,knoth2009,"Knoth, R. L., Benassi, V. A., & Geher, G. (2009).",2,representative_representative,,undergraduates,missing,does_not_apply,group,1,english,no,no,naive,25,2,0.08,0.002944,prop_es
+V,lash2017,"Lash, J. (2017).",5,premed,0.34,random_people,computer,online,individual,1,english,no,yes,naive,116,77,0.6637931034,0.001923894994,prop_es
+V,lash2017,"Lash, J. (2017).",5,medical_student,0.48,random_people,computer,online,individual,1,english,no,yes,naive,43,22,0.511627907,0.005810809111,prop_es
+V,lash2017,"Lash, J. (2017).",5,medical_doctor,0.46,random_people,computer,online,individual,1,english,no,yes,naive,53,29,0.5471698113,0.004675000168,prop_es
+V,lash2017,"Lash, J. (2017).",5,pre_law,0.32,random_people,computer,online,individual,1,english,no,yes,naive,54,37,0.6851851852,0.003994563837,prop_es
+V,lash2017,"Lash, J. (2017).",5,law_student,0.49,random_people,computer,online,individual,1,english,no,yes,naive,60,30,0.5,0.004166666667,prop_es
+V,lash2017,"Lash, J. (2017).",5,lawyer,0.75,random_people,computer,online,individual,1,english,no,yes,naive,45,11,0.2444444444,0.004104252401,prop_es
+V,lash2017,"Lash, J. (2017).",5,engineer,0.28,random_people,computer,online,individual,1,english,no,yes,naive,73,53,0.7260273973,0.002724816653,prop_es
+V,lash2017,"Lash, J. (2017).",5,other,0.43,random_people,computer,online,individual,1,english,no,yes,naive,282,161,0.5709219858,0.0008686881983,prop_es
+V,lu2015,"Lu, Y. (2015).",1,,,college_students,booklet,does_not_apply,group,1,chinese,no,yes,naive,224,148,0.6607142857,0.001000763028,prop_es
+V,ludwinpeery2019,"Ludwin-Peery, E., Bramley, N., Davis, E., & Gureckis, T. (2019).",3,,,random_people,computer,online,individual,1,english,no,yes,naive,90,65,0.7222222222,0.002229080933,prop_es
+V,ma2007,"Ma, X. (2007).",1,younger_adults,,undergraduates,missing,does_not_apply,individual,1,english,no,yes,naive,26,11,0.4230769231,0.009387801548,prop_es
+V,ma2007,"Ma, X. (2007).",1,older_adults,,random_people,missing,does_not_apply,individual,1,english,no,yes,naive,26,7,0.2692307692,0.007567137005,prop_es
+V,maguire2018,"Maguire, P., Moser, P., Maguire, R., & Keane, M. T. (2018).",1,standard_model,,undergraduates,missing,does_not_apply,group,1,english,no,yes,naive,85,54,0.6352941176,0.002725829432,prop_es
+V,maguire2018,"Maguire, P., Moser, P., Maguire, R., & Keane, M. T. (2018).",1,randomized_model,,undergraduates,missing,does_not_apply,group,1,english,no,yes,naive,106,41,0.3867924528,0.002237585389,prop_es
+V,messer1993,"Messer, W. S., & Griggs, R. A. (1993).",1,betting,0.71,undergraduates,missing,does_not_apply,group,1,english,no,yes,naive,100,71,0.71,0.002059,prop_es
+V,messer1993,"Messer, W. S., & Griggs, R. A. (1993).",1,standard,0.62,undergraduates,missing,does_not_apply,group,1,english,no,yes,naive,100,62,0.62,0.002356,prop_es
+V,messer1993,"Messer, W. S., & Griggs, R. A. (1993).",1,stastics_manip_standard,0.88,undergraduates,missing,does_not_apply,group,1,english,no,yes,naive,100,88,0.88,0.001056,prop_es
+V,mirza2017,"Mirza, N. S., & Blumberg, H. (2017).",1,probability_wording,,undergraduates,booklet,does_not_apply,individual,1,english,no,yes,naive,30,12,0.4,0.008,prop_es
+V,mirza2017,"Mirza, N. S., & Blumberg, H. (2017).",1,frequency_wording,,undergraduates,booklet,does_not_apply,individual,1,english,no,yes,naive,30,7,0.2333333333,0.005962962963,prop_es
+V,morsanyi2009,"Morsanyi, K., Handley, S. J., & Evans, J. S. (2009).",1,conflict_cond_and_children_with_autism,0.72,children,booklet,does_not_apply,group,1,english,no,yes,naive,23,16,0.6956521739,0.009205227254,prop_es
+V,morsanyi2009,"Morsanyi, K., Handley, S. J., & Evans, J. S. (2009).",1,no_conflict_cond_and_children_with_autism,0.65,children,booklet,does_not_apply,group,1,english,no,yes,naive,23,15,0.652173913,0.009862743486,prop_es
+V,morsanyi2009,"Morsanyi, K., Handley, S. J., & Evans, J. S. (2009).",1,conflict_control,0.88,children,booklet,does_not_apply,group,1,english,no,yes,naive,41,36,0.8780487805,0.002611685843,prop_es
+V,morsanyi2009,"Morsanyi, K., Handley, S. J., & Evans, J. S. (2009).",1,no_conflict_control,0.56,children,booklet,does_not_apply,group,1,english,no,yes,naive,41,23,0.5609756098,0.006006877439,prop_es
+V,morsanyi2010,"Morsanyi, K., Handley, S.J. & Evans, J.S.B.T. (2010)",1,autism,,adolescents,booklet,does_not_apply,group,1,english,no,yes,naive,22,19,0.8636363636,0.005353117956,prop_es
+V,morsanyi2010,"Morsanyi, K., Handley, S.J. & Evans, J.S.B.T. (2010)",1,control,,adolescents,booklet,does_not_apply,group,1,english,no,yes,naive,45,43,0.9555555556,0.0009437585734,prop_es
+V,msaouel2014,"Msaouel, P., Kappos, T., et al. (2014).",4,,,random_people,computer,online,individual,1,greek,yes,no,naive,200,137,0.685,0.001078875,prop_es
+V,neace2008,"Neace, W. P., Michaud, S., Bolling, L., Deer, K., & Zecevic, L. (2008).",,ranking_probability,,undergraduates,booklet,does_not_apply,group,1,english,no,yes,naive,33,29,0.8787878788,0.003227870996,prop_es
+V,neace2008,"Neace, W. P., Michaud, S., Bolling, L., Deer, K., & Zecevic, L. (2008).",,numeric_probability,,undergraduates,booklet,does_not_apply,group,1,english,no,yes,naive,32,18,0.5625,0.007690429688,prop_es
+V,neace2008,"Neace, W. P., Michaud, S., Bolling, L., Deer, K., & Zecevic, L. (2008).",,frequency,,undergraduates,booklet,does_not_apply,group,1,english,no,yes,naive,35,20,0.5714285714,0.006997084548,prop_es
+V,neys2006,"De Neys, W. (2006).",1,bill,,random_people,computer,in_lab,missing,1,dutch,no,no,naive,189,153,0.8095238095,0.0008158466208,prop_es
+V,neys2006,"De Neys, W. (2006).",1,linda,,random_people,computer,in_lab,missing,1,dutch,no,yes,naive,189,161,0.8518518519,0.0006677263193,prop_es
+V,nilson2008,"Nilsson, H. (2008).",1,first_learning_phase,,undergraduates,computer,in_lab,individual,1,english,no,no,naive,33,16,0.4848484848,0.007568800957,prop_es
+V,nilson2008,"Nilsson, H. (2008).",1,second_learning_phase,,undergraduates,computer,in_lab,individual,1,english,no,no,naive,33,20,0.6060606061,0.007234883268,prop_es
+V,nilson2008,"Nilsson, H. (2008).",1,third_learning_phase,,undergraduates,computer,in_lab,individual,1,english,no,no,naive,33,22,0.6666666667,0.006734006734,prop_es
+V,nordgren2016,"Nordgren, J. A. (2016).",1,,,college_students,computer,in_lab,individual,1,swedish,no,yes,naive,70,47,0.6714285714,0.003151603499,prop_es
+V,oechssler2009,"Oechssler, J., Roider, A., & Schmitz, P. W. (2009).",1,CRT_low,,random_people,computer,online,individual,1,german,no,yes,naive,1250,783,0.6264,0.000187218432,prop_es
+V,oechssler2009,"Oechssler, J., Roider, A., & Schmitz, P. W. (2009).",1,CRT_high,,random_people,computer,online,individual,1,german,no,yes,naive,1250,479,0.3832,0.000189086208,prop_es
+V,pagin2017,"Pagin, A. (2017).",1,standard,,random_people,computer,online,individual,1,english,no,yes,naive,53,21,0.3962264151,0.004513793266,prop_es
+V,pagin2017,"Pagin, A. (2017).",,debias_test,,random_people,computer,online,individual,1,english,no,no,naive,35,15,0.4285714286,0.006997084548,prop_es
+V,pagin2017,"Pagin, A. (2017).",,venn_diagram_test,,random_people,computer,online,individual,1,english,no,no,naive,50,15,0.3,0.0042,prop_es
+V,pfeifer2002,"Pfeifer, N. (2002).",1,,,college_students,booklet,does_not_apply,group,1,german,no,yes,naive,40,33,0.825,0.003609375,prop_es
+V,politzer1990,"Politzerº, G., & Noveck, I. (1990).",1,linda_problem,,college_students,booklet,does_not_apply,group,1,french,no,yes,informed,132,102,0.7727272727,0.001330453293,prop_es
+V,politzer1990,"Politzerº, G., & Noveck, I. (1990).",1,daniel_implicit,,college_students,booklet,does_not_apply,group,1,french,no,no,informed,132,43,0.3257575758,0.001663936194,prop_es
+V,politzer1990,"Politzerº, G., & Noveck, I. (1990).",1,daniel_explicit,,college_students,booklet,does_not_apply,group,1,french,no,no,informed,132,70,0.5303030303,0.001886982775,prop_es
+V,politzer1990,"Politzerº, G., & Noveck, I. (1990).",1,edouard_implicit,,college_students,booklet,does_not_apply,group,1,french,no,no,informed,132,45,0.3409090909,0.001702197596,prop_es
+V,politzer1990,"Politzerº, G., & Noveck, I. (1990).",1,edouard_explicit,,college_students,booklet,does_not_apply,group,1,french,no,no,informed,132,70,0.5303030303,0.001886982775,prop_es
+V,politzer1990,"Politzerº, G., & Noveck, I. (1990).",1,lendl_implicit,,college_students,booklet,does_not_apply,group,1,french,no,no,informed,132,28,0.2121212121,0.001266104572,prop_es
+V,politzer1990,"Politzerº, G., & Noveck, I. (1990).",1,lendl_explicit,,college_students,booklet,does_not_apply,group,1,french,no,no,informed,132,22,0.1666666667,0.001052188552,prop_es
+Fu,riis2003,"Jason Riis, Norbert Schwarz (2003).",1,approach,,college_students,computer,in_lab,group,1,english,yes,yes,naive,19,12,0.6315789474,0.01224668319,prop_es
+Fu,riis2003,"Jason Riis, Norbert Schwarz (2003).",1,avoid,,college_students,computer,in_lab,group,1,english,yes,yes,naive,19,19,1,0,prop_es
+Fu,riis2003,"Jason Riis, Norbert Schwarz (2003).",2,approach,,college_students,computer,in_lab,group,1,english,yes,no,naive,24,15,0.625,0.009765625,prop_es
+Fu,riis2003,"Jason Riis, Norbert Schwarz (2003).",2,avoid,,college_students,computer,in_lab,group,1,english,yes,no,naive,25,23,0.92,0.002944,prop_es
+Fu,riis2003,"Jason Riis, Norbert Schwarz (2003).",2,control,,college_students,computer,in_lab,group,1,english,yes,no,naive,25,18,0.72,0.008064,prop_es
+Fu,sides2000,"Sides, A. E. (2000).",1,probability_condition,,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,44,38,0.8636363636,0.002676558978,prop_es
+Fu,sides2000,"Sides, A. E. (2000).",1,betting_condition,,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,45,36,0.8,0.003555555556,prop_es
+Fu,sides2000,"Sides, A. E. (2000).",2,probability_condition,,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,29,29,1,0,prop_es
+Fu,sides2000,"Sides, A. E. (2000).",2,betting_condition,,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,28,25,0.8928571429,0.00341654519,prop_es
+Molly,sides2002,"Sides, A., Osherson, D., Bonini, N. et al. (2002)",1,probability_instructions,0.37777,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,45,38,0.8444444444,0.002919067215,prop_es
+Molly,sides2002,"Sides, A., Osherson, D., Bonini, N. et al. (2002)",1,betting_instructions,0.3555,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,45,36,0.8,0.003555555556,prop_es
+Molly,sides2002,"Sides, A., Osherson, D., Bonini, N. et al. (2002)",2,probability_instructions,0.659,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,29,29,1,0,prop_es
+Molly,sides2002,"Sides, A., Osherson, D., Bonini, N. et al. (2002)",2,betting_instructions,0.54,college_students,booklet,does_not_apply,group,1,english,yes,no,naive,28,25,0.8928571429,0.00341654519,prop_es
+Molly,sides2002,"Sides, A., Osherson, D., Bonini, N. et al. (2002)",3,probability_instructions,0.481,college_students,booklet,does_not_apply,group,1,italian,yes,no,naive,92,90,0.9782608696,0.0002311580505,prop_es
+Molly,sides2002,"Sides, A., Osherson, D., Bonini, N. et al. (2002)",3,betting_instructions,0.53888,college_students,booklet,does_not_apply,group,1,italian,yes,no,naive,60,60,1,0,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,liberal_jim_two_unrepresentative,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,2,0.08333333333,0.00318287037,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,traditional_linda_two_unrepresentative,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,2,0.08333333333,0.00318287037,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,feminist_linda_two_unrepresentative,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,2,0.08333333333,0.00318287037,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,liberal_jim_two_representative,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,7,0.2916666667,0.008608217593,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,conservative_jim_two_representative,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,5,0.2083333333,0.006872106481,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,traditional_linda_two_representative,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,5,0.2083333333,0.006872106481,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,feminist_linda_two_representative,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,6,0.25,0.0078125,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,liberal_jim_one_one,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,15,0.625,0.009765625,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,conservative_jim_one_one,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,19,0.7916666667,0.006872106481,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,traditional_linda_one_one,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,17,0.7083333333,0.008608217593,prop_es
+Fu,wells1985,"Wells, G. L. (1985).",1,feminist_linda_one_one,,college_students,booklet,does_not_apply,group,1,english,yes,yes,naive,24,18,0.75,0.0078125,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",1,linda_scenario,,college_students,missing,does_not_apply,group,1,english,yes,yes,naive,44,34,0.7727272727,0.00399135988,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",1,student_scenario,,college_students,missing,does_not_apply,group,1,english,yes,no,naive,44,43,0.9772727273,0.0005047896319,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",1,horserace_scenario,,college_students,missing,does_not_apply,group,1,english,yes,no,naive,42,22,0.5238095238,0.00593888349,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",2,linda_control,,college_students,missing,does_not_apply,group,1,english,yes,yes,naive,45,37,0.8222222222,0.003248285322,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",2,linda_known,,college_students,missing,does_not_apply,group,1,english,yes,yes,naive,45,40,0.8888888889,0.00219478738,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",2,linda_unknown,,college_students,missing,does_not_apply,group,1,english,yes,yes,naive,45,26,0.5777777778,0.005421124829,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",3,linda_control_first_year,,college_students,missing,does_not_apply,group,1,english,yes,yes,naive,12,11,0.9166666667,0.006365740741,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",3,linda_control_second_year,,college_students,missing,does_not_apply,group,1,english,yes,yes,informed,19,17,0.8947368421,0.004956990815,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",3,linda_known_first_year,,college_students,missing,does_not_apply,group,1,english,yes,yes,naive,12,12,1,0,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",3,linda_known_second_year,,college_students,missing,does_not_apply,group,1,english,yes,yes,informed,13,13,1,0,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",3,linda_unknown_first_year,,college_students,missing,does_not_apply,group,1,english,yes,yes,naive,17,11,0.6470588235,0.0134337472,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",3,linda_unknown_second_year,,college_students,missing,does_not_apply,group,1,english,yes,yes,informed,17,7,0.4117647059,0.0142479137,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",4,linda_unknown_bet,,college_students,missing,does_not_apply,group,1,english,yes,yes,informed,24,16,0.6666666667,0.009259259259,prop_es
+Fu,wolford1990,"Wolford, G., Taylor, H.A. & Beck, J.R. (1990)",4,linda_unknown_no_bet,,college_students,missing,does_not_apply,group,1,english,yes,yes,informed,24,15,0.625,0.009765625,prop_es
+Fu,zizzo2003,"Zizzo, D. J. (2003)",1,A,0.313,random_people,computer,in_lab,group,1,english,no,no,naive,16,5,0.3125,0.01342773438,prop_es
+Fu,zizzo2003,"Zizzo, D. J. (2003)",1,B,0.398,random_people,computer,in_lab,group,1,english,no,no,naive,14,6,0.4285714286,0.01749271137,prop_es
+Fu,zizzo2003,"Zizzo, D. J. (2003)",1,C,0.333,random_people,computer,in_lab,group,1,english,no,no,naive,15,5,0.3333333333,0.01481481481,prop_es
+Fu,zizzo2003,"Zizzo, D. J. (2003)",1,D,0.286,random_people,computer,in_lab,group,1,english,no,no,naive,15,4,0.2666666667,0.01303703704,prop_es
