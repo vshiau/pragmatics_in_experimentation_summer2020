@@ -15,7 +15,7 @@ library(tidyverse)
 library(knitr)
 library(metafor) # this is a package for analyzing meta-analytic data
 library(here)
-# source("helpers/prisma_diagram.R") # this loads some code I wrote to make the PRISMA diagram
+# source("helpers/prisma_diagram.R") # this loads some code I wrote to make the PRISMA diagram # silly change
 ```
 
 * * *
