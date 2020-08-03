@@ -16,7 +16,6 @@ library(knitr)
 library(metafor) # this is a package for analyzing meta-analytic data
 library(here)
 # source("helpers/prisma_diagram.R") # this loads some code I wrote to make the PRISMA diagram
-
 ```
 
 * * *
@@ -52,8 +51,8 @@ This plot displays the effect size of each experiment from the 52 unique papers 
 
 ```{r}
 # Accessing spreadsheet with effect sizes and moderators
-MA_DATA_PATH <- here("data/processed/Updated MA data tidy with ES.csv")
-
+# MA_DATA_PATH <- here("data/processed/Updated MA data tidy with ES.csv")
+MA_DATA_PATH <- here("data/processed/MA\ Data-\ Linda\ -\ Updated\ MA\ data\ tidy\ with\ ES.csv")
 # Read in data
 ma_data <- read_csv(MA_DATA_PATH)
 ```
@@ -61,17 +60,15 @@ ma_data <- read_csv(MA_DATA_PATH)
 <!-- Fit meta-analytic model -->
 ```{r}
 # measure = "PLO" transforms the proportional effect sizes into Log Odds, a scale ranging from negative infinity to infinity
-ma_model <- rma(data = ma_data, measure="PLO", xi=n_at_least_one_error, ni=n_1)
-
- rma.mv(d_calc ~ mean_age * test_mass_or_distributed, V = d_var_calc,
-                            random = ~ 1 | short_cite, data = ma_data)
+transformed_es <- escalc(data = ma_data, measure="PLO", xi=n_at_least_one_error, ni=n_1)
+base_model <- rma.mv(yi = yi, V = vi,  random = ~ 1 | short_cite, data = transformed_es)
 ```
 
 <!-- Make forest plot -->
 In any plot below, uncommenting the below two lines beginning with '# pdf' and '# dev.off' will download a pdf of the corresponding plot to a folder called "plots".
-```{r, fig.height = 30, fig.width = 10}
+```{r, fig.height = 30, fig.width = 10, warning = F, message = F}
 # pdf("plots/forest_plot.pdf", height = 35, width = 13.5)
-forest(ma_model,
+forest(base_model,
        header = T,
        slab = ma_data$short_cite,
        col = "red",
@@ -94,7 +91,7 @@ This plot displays the relationship between the effect size and standard error. 
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/funnel_plot.pdf", height = 6, width = 6)
-funnel(ma_model)
+funnel(base_model)
 # dev.off()
 ```
 
@@ -108,10 +105,10 @@ Because a smaller standard error signals a larger sample size, it appears that e
 
 ## Linda Problem
 ```{r}
-cis_by_linda <- ma_data %>%
+cis_by_linda <- transformed_es %>%
     group_by(linda_problem) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
+    summarize(mean = mean(yi),
+            sd = sd(yi),
             n = n()) %>%
     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
          ci_lower = mean - ci_range_95,
@@ -120,9 +117,8 @@ cis_by_linda <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/linda_problem_yes_no.pdf", height = 6, width = 6)
-
-ggplot(ma_data, aes(x = linda_problem, 
-                    y = d_calc, 
+ggplot(transformed_es, aes(x = linda_problem, 
+                    y = yi, 
                     color = linda_problem)) +
   geom_violin() +
   geom_point(alpha = .4)  +
@@ -143,13 +139,18 @@ When plotting the effect sizes of experiments that use the exact wording of the 
 
 This suggests that the original effect found by Tversky and Kaneman in the 1983 seminal paper was not solely due the wording of the original Linda Problem, but rather stemming from an underlying suspectibility to the much broader conjunction fallacy.
 
+### Model
+```{r}
+rma.mv(yi ~ linda_problem , V = vi,  random = ~ 1 | short_cite, data = transformed_es)
+```
+
 
 ## Text Format
 ```{r}
-cis_by_text <- ma_data %>%
+cis_by_text <- transformed_es %>%
     group_by(text_format) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
+    summarize(mean = mean(yi),
+            sd = sd(yi),
             n = n()) %>%
     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
          ci_lower = mean - ci_range_95,
@@ -158,9 +159,8 @@ cis_by_text <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/text_format.pdf", height = 6, width = 6)
-
-ggplot(ma_data, aes(x = text_format, 
-                    y = d_calc, 
+ggplot(transformed_es, aes(x = text_format, 
+                    y = yi, 
                     color = text_format)) +
   geom_violin() +
   geom_point(alpha = .4)  +
@@ -181,12 +181,18 @@ Text format corresponds to the means through which participants accessed the mat
 
 We observe that the mean effect sizes and confidence intervals for each text format largely overlap, suggesting that the text format has a limited effect on the committing of a conjunction fallacy by the participant.
 
+### Model
+```{r}
+rma.mv(yi ~ text_format , V = vi,  random = ~ 1 | short_cite, data = transformed_es)
+```
+
+
 ## Computer Medium
 ```{r}
-cis_by_computer <- ma_data %>%
+cis_by_computer <- transformed_es %>%
     group_by(computer_medium) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
+    summarize(mean = mean(yi),
+            sd = sd(yi),
             n = n()) %>%
     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
          ci_lower = mean - ci_range_95,
@@ -195,9 +201,8 @@ cis_by_computer <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/computer_online_vs_in-lab.pdf", height = 6, width = 6)
-
-ggplot(ma_data, aes(x = computer_medium, 
-                    y = d_calc, 
+ggplot(transformed_es, aes(x = computer_medium, 
+                    y = yi, 
                     color = computer_medium)) +
   geom_violin() +
   geom_point(alpha = .4)  +
@@ -222,6 +227,18 @@ We see that there is a larger mean effect size for experiments performed in the 
 
 When interacting with an experimenter, it is likely that some verbal exchange has occurred between the experimenter and participant as necessitated by social cues. This verbal exchange may contain instructions pertaining to the task, which may have influenced the participant's results.
 
+
+### Model
+```{r}
+rma.mv(yi ~ computer_medium , V = vi,  random = ~ 1 | short_cite, 
+       data = transformed_es %>% filter(computer_medium != "does_not_apply"))
+
+
+rma.mv(yi ~ computer_medium + linda_problem , V = vi,  random = ~ 1 | short_cite, 
+       data = transformed_es)
+```
+
+
 ## Naive or Informed
 ```{r}
 cis_by_participant_status <- ma_data %>%
@@ -236,7 +253,6 @@ cis_by_participant_status <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/naive_or_informed.pdf", height = 6, width = 6)
-
 ggplot(ma_data, aes(x = naive_or_informed, 
                     y = d_calc, 
                     color = naive_or_informed)) +
@@ -254,7 +270,6 @@ ggplot(ma_data, aes(x = naive_or_informed,
   theme_classic(base_size = 15) +
   theme(legend.position = "none")
 # dev.off()
-
 ```
 This moderator corresponds to the amount of previous statistical knowledge of the participants. The key to avoiding a conjunction fallacy is knowledge of probability. Having two conditions apply to a situation at the same time is less likely than having one condition apply to a situation. Thus, we reasoned that prior statistical knowledge might prevent a participant from committing a conjunction fallacy. 
 
@@ -274,7 +289,6 @@ cis_by_stimuli_relevance <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/stimuli_context_specific.pdf", height = 6, width = 6)
-
 ggplot(ma_data, aes(x = stimuli_context_specific, 
                     y = d_calc, 
                     color = stimuli_context_specific)) +
@@ -380,7 +394,6 @@ cis_by_language <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/language.pdf", height = 6, width = 6)
-
 ggplot(ma_data, aes(x = language, 
                     y = d_calc, 
                     color = language)) +
@@ -408,7 +421,6 @@ ma_data_with_eng <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/language.pdf", height = 6, width = 6)
-
 # ggplot(ma_data, aes(x = , 
 #                     y = d_calc, 
 #                     color = )) +
@@ -427,6 +439,3 @@ ma_data_with_eng <- ma_data %>%
 #   theme(legend.position = "none")
 #dev.off()
 ```
-
-
-
