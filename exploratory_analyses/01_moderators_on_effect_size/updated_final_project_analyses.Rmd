@@ -52,7 +52,7 @@ This plot displays the effect size of each experiment from the 52 unique papers 
 ```{r}
 # Accessing spreadsheet with effect sizes and moderators
 # MA_DATA_PATH <- here("data/processed/MA\ Data-\ Linda\ -\ Updated\ MA\ data\ tidy\ with\ ES.csv")
-MA_DATA_PATH <- here("Updated_MA_data_tidy_with_ES.csv")
+MA_DATA_PATH <- here("data/processed/Updated_MA_data_tidy_with_ES.csv")
 # Read in data
 ma_data <- read_csv(MA_DATA_PATH)
 ```
