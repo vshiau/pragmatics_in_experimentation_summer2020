@@ -51,8 +51,8 @@ This plot displays the effect size of each experiment from the 52 unique papers 
 
 ```{r}
 # Accessing spreadsheet with effect sizes and moderators
-# MA_DATA_PATH <- here("data/processed/Updated MA data tidy with ES.csv")
-MA_DATA_PATH <- here("data/processed/MA\ Data-\ Linda\ -\ Updated\ MA\ data\ tidy\ with\ ES.csv")
+# MA_DATA_PATH <- here("data/processed/MA\ Data-\ Linda\ -\ Updated\ MA\ data\ tidy\ with\ ES.csv")
+MA_DATA_PATH <- here("Updated_MA_data_tidy_with_ES.csv")
 # Read in data
 ma_data <- read_csv(MA_DATA_PATH)
 ```
@@ -241,10 +241,10 @@ rma.mv(yi ~ computer_medium + linda_problem , V = vi,  random = ~ 1 | short_cite
 
 ## Naive or Informed
 ```{r}
-cis_by_participant_status <- ma_data %>%
+cis_by_participant_status <- transformed_es %>%
     group_by(naive_or_informed) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
+    summarize(mean = mean(yi),
+            sd = sd(yi),
             n = n()) %>%
     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
          ci_lower = mean - ci_range_95,
@@ -253,8 +253,8 @@ cis_by_participant_status <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/naive_or_informed.pdf", height = 6, width = 6)
-ggplot(ma_data, aes(x = naive_or_informed, 
-                    y = d_calc, 
+ggplot(transformed_es, aes(x = naive_or_informed, 
+                    y = yi, 
                     color = naive_or_informed)) +
   geom_violin() +
   geom_point(alpha = .4)  +
@@ -275,12 +275,19 @@ This moderator corresponds to the amount of previous statistical knowledge of th
 
 We observe that the mean effect sizes and confidence intervals for both naive and informed participants largely overlap, suggesting that previous statistical knowledge has a limited effect on the committing of a conjunction fallacy by the participant.
 
-## Context Specific?
+### Model
 ```{r}
-cis_by_stimuli_relevance <- ma_data %>%
+rma.mv(yi ~ naive_or_informed , V = vi,  random = ~ 1 | short_cite, data = transformed_es)
+```
+
+
+
+## Context Specific
+```{r}
+cis_by_stimuli_relevance <- transformed_es %>%
     group_by(stimuli_context_specific) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
+    summarize(mean = mean(yi),
+            sd = sd(yi),
             n = n()) %>%
     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
          ci_lower = mean - ci_range_95,
@@ -289,8 +296,8 @@ cis_by_stimuli_relevance <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/stimuli_context_specific.pdf", height = 6, width = 6)
-ggplot(ma_data, aes(x = stimuli_context_specific, 
-                    y = d_calc, 
+ggplot(transformed_es, aes(x = stimuli_context_specific, 
+                    y = yi, 
                     color = stimuli_context_specific)) +
   geom_violin() +
   geom_point(alpha = .4)  +
@@ -308,12 +315,17 @@ ggplot(ma_data, aes(x = stimuli_context_specific,
 # dev.off()
 ```
 
+### Model
+```{r}
+rma.mv(yi ~ stimuli_context_specific, V = vi,  random = ~ 1 | short_cite, data = transformed_es)
+```
+
 ## Group vs Individial
 ```{r}
-cis_by_testing_type <- ma_data %>%
+cis_by_testing_type <- transformed_es %>%
     group_by(group_or_individual_testing) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
+    summarize(mean = mean(yi),
+            sd = sd(yi),
             n = n()) %>%
     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
          ci_lower = mean - ci_range_95,
@@ -322,8 +334,8 @@ cis_by_testing_type <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/group_or_individual.pdf", height = 6, width = 6)
-ggplot(ma_data, aes(x = group_or_individual_testing, 
-                    y = d_calc, 
+ggplot(transformed_es, aes(x = group_or_individual_testing, 
+                    y = yi, 
                     color = group_or_individual_testing)) +
   geom_violin() +
   geom_point(alpha = .4)  +
@@ -380,12 +392,17 @@ We see that there is a larger mean effect size for experiments performed with in
 <!-- # dev.off() -->
 <!-- ``` -->
 
+### Model
+```{r}
+rma.mv(yi ~ group_or_individual_testing, V = vi,  random = ~ 1 | short_cite, data = transformed_es)
+```
+
 ## Language
 ```{r}
-cis_by_language <- ma_data %>%
+cis_by_language <- transformed_es %>%
     group_by(language) %>%
-    summarize(mean = mean(d_calc),
-            sd = sd(d_calc),
+    summarize(mean = mean(yi),
+            sd = sd(yi),
             n = n()) %>%
     mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
          ci_lower = mean - ci_range_95,
@@ -394,8 +411,8 @@ cis_by_language <- ma_data %>%
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/language.pdf", height = 6, width = 6)
-ggplot(ma_data, aes(x = language, 
-                    y = d_calc, 
+ggplot(transformed_es, aes(x = language, 
+                    y = yi, 
                     color = language)) +
   geom_violin() +
   geom_point(alpha = .4)  +
@@ -412,30 +429,48 @@ ggplot(ma_data, aes(x = language,
   theme(legend.position = "none")
 #dev.off()
 ```
-With the exception of experiments conducted in French, we see that the effect sizes for the conjunction fallacy are all above 0.50. The largest effect sizes are present in experiments conducted in Italian, Swedish, and Dutch, followed by those in English, Greek, and German.
+With the exception of experiments conducted in French, we see that the effect sizes for the conjunction fallacy are all positive. The largest effect sizes are present in experiments conducted in Italian, Swedish, and Dutch, followed by those in English, Greek, and German.
 
 ```{r}
 ma_data_with_eng <- ma_data %>%
   mutate(english_or_non_english = case_when(language == "english" ~ "english", TRUE~ "not_english"))
+
+transformed_es_with_eng <- escalc(data = ma_data_with_eng, measure="PLO", xi=n_at_least_one_error, ni=n_1)
+
+cis_by_not_eng <- transformed_es_with_eng %>%
+    group_by(english_or_non_english) %>%
+    summarize(mean = mean(yi),
+            sd = sd(yi),
+            n = n()) %>%
+    mutate(ci_range_95 =  1.96 * (sd/sqrt(n)),
+         ci_lower = mean - ci_range_95,
+         ci_upper = mean + ci_range_95)
+
+cis_by_not_eng
+
 ```
 
 ```{r, fig.height = 6, fig.width = 6}
 # pdf("plots/language.pdf", height = 6, width = 6)
-# ggplot(ma_data, aes(x = , 
-#                     y = d_calc, 
-#                     color = )) +
-#   geom_violin() +
-#   geom_point(alpha = .4)  +
-#   ylab("Effect Size") +
-#   xlab("Language") +
-#   ggtitle("Effect Size by English and not-English studies") +
-#   geom_pointrange(data = by_eng_and_not_eng, 
-#                   aes(x = language, 
-#                       y = mean, ymin = ci_lower, 
-#                       ymax = ci_upper), 
-#                   color = "black") +
-#   geom_hline(aes(yintercept = 0), linetype = 2) +
-#   theme_classic(base_size = 16) +
-#   theme(legend.position = "none")
+ggplot(transformed_es_with_eng, aes(x = english_or_non_english,
+                    y = yi,
+                    color = english_or_non_english)) +
+  geom_violin() +
+  geom_point(alpha = .4)  +
+  ylab("Effect Size") +
+  xlab("Language") +
+  ggtitle("Effect Size by English and not-English studies") +
+  geom_pointrange(data = cis_by_not_eng,
+                  aes(x = english_or_non_english,
+                      y = mean, ymin = ci_lower,
+                      ymax = ci_upper),
+                  color = "black") +
+  geom_hline(aes(yintercept = 0), linetype = 2) +
+  theme_classic(base_size = 16) +
+  theme(legend.position = "none")
 #dev.off()
+```
+### Model
+```{r}
+rma.mv(yi ~ english_or_non_english, V = vi,  random = ~ 1 | short_cite, data = transformed_es_with_eng)
 ```
