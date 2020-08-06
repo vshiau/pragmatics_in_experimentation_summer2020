@@ -19,6 +19,7 @@ library(here)
 ```
 
 * * *
+The rpub can be found at: https://rpubs.com/vshiau/v2-ma-for-the-conjunction-fallacy
 
 We aim to analyze the effect size of experiments done with the Linda Problem Paradigm,
 coined by Tversky in the 1983 seminal paper.
@@ -232,10 +233,6 @@ When interacting with an experimenter, it is likely that some verbal exchange ha
 ```{r}
 rma.mv(yi ~ computer_medium , V = vi,  random = ~ 1 | short_cite, 
        data = transformed_es %>% filter(computer_medium != "does_not_apply"))
-
-
-rma.mv(yi ~ computer_medium + linda_problem , V = vi,  random = ~ 1 | short_cite, 
-       data = transformed_es)
 ```
 
 
@@ -394,7 +391,7 @@ We see that there is a larger mean effect size for experiments performed with in
 
 ### Model
 ```{r}
-rma.mv(yi ~ group_or_individual_testing, V = vi,  random = ~ 1 | short_cite, data = transformed_es)
+rma.mv(yi ~ group_or_individual_testing, V = vi,  random = ~ 1 | short_cite, data = transformed_es %>% filter(group_or_individual_testing != "missing"))
 ```
 
 ## Language
@@ -431,7 +428,17 @@ ggplot(transformed_es, aes(x = language,
 ```
 With the exception of experiments conducted in French, we see that the effect sizes for the conjunction fallacy are all positive. The largest effect sizes are present in experiments conducted in Italian, Swedish, and Dutch, followed by those in English, Greek, and German.
 
+### Model
 ```{r}
+rma.mv(yi ~ language, V = vi,  random = ~ 1 | short_cite, data = transformed_es)
+```
+
+## English and Non-English Studies
+```{r}
+# Will make the same transformed es with english/non-english included
+# ma_data_with_eng <- transformed_es %>% 
+#   mutate(english_or_non_english = case_when(language == "english" ~ "english", TRUE~ "not_english"))
+
 ma_data_with_eng <- ma_data %>%
   mutate(english_or_non_english = case_when(language == "english" ~ "english", TRUE~ "not_english"))
 
@@ -470,7 +477,27 @@ ggplot(transformed_es_with_eng, aes(x = english_or_non_english,
   theme(legend.position = "none")
 #dev.off()
 ```
+
 ### Model
 ```{r}
 rma.mv(yi ~ english_or_non_english, V = vi,  random = ~ 1 | short_cite, data = transformed_es_with_eng)
+```
+
+# Combined Multivariate Linear Models
+```{r}
+# For the Computer Medium and Linda Problem
+rma.mv(yi ~ computer_medium + linda_problem , V = vi,  random = ~ 1 | short_cite, 
+       data = transformed_es)
+
+# For Text Format and Linda Problem
+rma.mv(yi ~ text_format + linda_problem , V = vi,  random = ~ 1 | short_cite, 
+       data = transformed_es)
+
+# For English and Non-English and Linda Problem
+rma.mv(yi ~ english_or_non_english + linda_problem , V = vi,  random = ~ 1 | short_cite, 
+       data = transformed_es_with_eng)
+
+# For English and Non-English and Text Format
+rma.mv(yi ~ english_or_non_english + text_format, V = vi,  random = ~ 1 | short_cite, 
+       data = transformed_es_with_eng)
 ```
